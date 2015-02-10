@@ -9,7 +9,7 @@ import java.net.URL;
 import java.util.Random;
 
 
-public class StartingPoint extends Applet implements Runnable, KeyListener {
+public class BallGame extends Applet implements Runnable, KeyListener {
 	
 
 	private Image i;
@@ -24,7 +24,7 @@ public class StartingPoint extends Applet implements Runnable, KeyListener {
 	Image desert;
 	int levelCheck = 0;
 	boolean gameOver = false;
-	
+	private boolean run = true;
 
 	
 	@Override
@@ -43,8 +43,13 @@ public class StartingPoint extends Applet implements Runnable, KeyListener {
 	
 	@Override
 	public void start() {
+		resetGame();
+	}
+	
+	public void resetGame() {
 		b = new Ball(0, 0);
-		score = 900;
+		
+		score = 0;
 		
 		for (int i = 0; i<p.length; i++){
 			Random r = new Random();
@@ -81,7 +86,7 @@ public class StartingPoint extends Applet implements Runnable, KeyListener {
 	@Override
 	public void run() {
 		//thread info'
-		while (true){
+		while (run){
 			
 			gameOver = b.getGameOver();
 			

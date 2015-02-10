@@ -5,11 +5,11 @@ import java.net.URL;
 public class Pictures {
 	
 	static Image platform, ball;
-	static StartingPoint sp;
+	static BallGame sp;
 	URL url;
 	static int level = 1;
 	
-	public Pictures(StartingPoint sp) {
+	public Pictures(BallGame sp) {
 		// TODO Auto-generated constructor stub
 		try {
 			url = sp.getDocumentBase();

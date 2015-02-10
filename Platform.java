@@ -32,7 +32,7 @@ public class Platform {
 		plat = Pictures.platform;
 	}
 	
-	public void update(StartingPoint sp, Ball b){
+	public void update(BallGame sp, Ball b){
 		
 		int platformSpriteChanger = (int)(frame + .1);
 		if (platformSpriteChanger < 3){

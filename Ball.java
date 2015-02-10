@@ -110,7 +110,7 @@ public class Ball {
 		}
 	}
 	
-	public void update(StartingPoint sp){
+	public void update(BallGame sp){
 		if (x + dx > sp.getWidth() - radius -1){
 			x = sp.getWidth() - radius - 1;
 			dx = -dx;

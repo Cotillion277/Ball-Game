@@ -5,9 +5,9 @@ import java.util.Random;
 
 public class ScorePlus extends Item{
 
-	private StartingPoint appletInfo;
+	private BallGame appletInfo;
 	
-	public ScorePlus(int x, StartingPoint appletInfo) {
+	public ScorePlus(int x, BallGame appletInfo) {
 		super(x);
 		// TODO Auto-generated constructor stub
 		this.appletInfo = appletInfo;

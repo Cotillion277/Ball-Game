@@ -7,7 +7,7 @@ public class Item {
 	
 	
 	private int x, y, dx, radius;
-	private StartingPoint sp;
+	private BallGame sp;
 	private boolean createNew = false;
 	
 	public Item(int x) {
@@ -33,7 +33,7 @@ public class Item {
 		return y;
 	}
 	
-	public void update(StartingPoint sp, Ball b){
+	public void update(BallGame sp, Ball b){
 		x += dx;
 		this.sp = sp;
 		checkForCollision(b);
