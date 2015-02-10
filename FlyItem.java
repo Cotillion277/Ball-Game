@@ -11,7 +11,7 @@ public class FlyItem extends Item{
 
 	public void paint(Graphics g) {
 		// TODO Auto-generated method stub
-		g.setColor(Color.YELLOW);
+		g.setColor(Color.orange);
 		super.paint(g);
 	}
 	

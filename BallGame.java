@@ -97,6 +97,7 @@ public class BallGame extends Applet implements Runnable, KeyListener {
 			
 			if (flyingCounter == 500){
 				b.setFlyMode(false);
+				flyingCounter = 0;
 			}
 			
 			gameOver = b.getGameOver();
@@ -124,22 +125,27 @@ public class BallGame extends Applet implements Runnable, KeyListener {
 			for (int i = 0; i < item.length; i++){
 				if (item[i].isCreateNew()){
 					item[i] = null;
-					switch (r.nextInt(5)){
+					switch (r.nextInt(6)){
 					case 0: 
-						item[i] = new GravUp(getWidth() + 10 * r.nextInt(500));
+						item[i] = new GravUp(getWidth() + 2000 * i);
 						break;
 					case 1: 
-						item[i] = new GravDown(getWidth() + 10 * r.nextInt(500));
+						item[i] = new GravDown(getWidth() + 2000 * i);
 						break;	
 					case 2: 
-						item[i] = new AgilUp(getWidth() + 10 * r.nextInt(500));
+						item[i] = new AgilUp(getWidth() + 2000 * i);
 						break;
 					case 3: 
-						item[i] = new AgilDown(getWidth() + 10 * r.nextInt(500));
+						item[i] = new AgilDown(getWidth() + 2000 * i);
 						break;		
+					
 					case 4:
-						item[i] = new ScorePlus(getWidth() + 10 * r.nextInt(500), this);
+						item[i] = new ScorePlus(getWidth() + 2000 * i, this);
 						break;	
+					
+					case 5:
+						item[i] = new FlyItem(getWidth() + 2000 * i, this);
+						break;
 					}
 					item[i].setCreateNew(false);
 				}
@@ -235,7 +241,11 @@ public class BallGame extends Applet implements Runnable, KeyListener {
 		case KeyEvent.VK_RIGHT:
 			b.moveRight();
 			break;
-		}
+		case KeyEvent.VK_F5:
+			Item debugFly = new FlyItem(getWidth(), this); 
+			System.out.println("test");
+			break;	
+		}	
 	}
 
 	@Override
