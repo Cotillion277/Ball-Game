@@ -17,6 +17,7 @@ public class Ball {
 	private int agility = 3;
 	private int maxSpeed = 20;
 	private boolean gameOver = false;
+	private boolean flyMode = false;
 	
 	public Ball() {
 		// TODO Auto-generated constructor stub
@@ -96,10 +97,22 @@ public class Ball {
 		this.maxSpeed = maxSpeed;
 	}
 	
+	public void setFlyMode(boolean flyMode) {
+		this.flyMode = flyMode;
+	}
+	
+	public boolean isFlyMode() {
+		return flyMode;
+	}
+	
 	public void moveRight(){
 		if (dx + agility < maxSpeed){
 			dx += agility;
 			x++;
+		}
+		
+		if (flyMode){
+			gravity = 0;
 		}
 	}
 	
@@ -108,7 +121,12 @@ public class Ball {
 			dx -= agility;
 			x--;
 		}
+		
+		if (flyMode){
+			gravity = 0;
+		}
 	}
+	
 	
 	public void update(BallGame sp){
 		if (x + dx > sp.getWidth() - radius -1){
@@ -151,6 +169,11 @@ public class Ball {
 		 
 		
 		return gameOver;
+	}
+	public void enableFlyMode() {
+		flyMode = true;
+		// TODO Auto-generated method stub
+		
 	}
 
 }

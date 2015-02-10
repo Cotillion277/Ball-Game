@@ -25,7 +25,7 @@ public class BallGame extends Applet implements Runnable, KeyListener {
 	int levelCheck = 0;
 	boolean gameOver = false;
 	private boolean run = true;
-
+	int flyingCounter = 0;
 	
 	@Override
 	public void init() { //called only once, first time someone sees the applet. then start() is called
@@ -58,7 +58,7 @@ public class BallGame extends Applet implements Runnable, KeyListener {
 		
 		for (int i = 0; i<item.length; i++){
 			Random r = new Random();
-			switch (r.nextInt(5)){
+			switch (r.nextInt(6)){
 			case 0: 
 				item[i] = new GravUp(getWidth() + 2000 * i);
 				break;
@@ -75,8 +75,11 @@ public class BallGame extends Applet implements Runnable, KeyListener {
 			case 4:
 				item[i] = new ScorePlus(getWidth() + 2000 * i, this);
 				break;	
-			}
 			
+			case 5:
+				item[i] = new FlyItem(getWidth() + 2000 * i, this);
+				break;
+			}
 			//^^ polymorhpism. stuff that extend item class
 		}
 		Thread thread = new Thread(this); //thread needs a run method so this tells it to use the run method from Runnable
@@ -87,6 +90,14 @@ public class BallGame extends Applet implements Runnable, KeyListener {
 	public void run() {
 		//thread info'
 		while (run){
+			
+			if (b.isFlyMode()){
+				flyingCounter++;			
+			}
+			
+			if (flyingCounter == 500){
+				b.setFlyMode(false);
+			}
 			
 			gameOver = b.getGameOver();
 			
